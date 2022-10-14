@@ -1,0 +1,43 @@
+<html>
+
+<head>
+    <title>Tabla de multiplicar</title>
+    <meta charset="UTF-8">
+    <style>
+        table,
+        th,
+        td {
+            border: solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        // Aquí se introduce el número
+        var num = prompt("Introduce un número para ver su tabla de multiplicar");
+
+        // Título de la tabla con el número, en la etiqueta table tiene el "align" para que se centre
+        document.write("<table align='center'><tr><th>Tabla de Multiplicar del " + num + "</th></tr></table>");
+
+        // Espacio en blanco para separar el título de la tabla
+        document.write("<br>");
+
+        // Tabla de multilpicar, en la etiqueta table tiene el "align" para  que se centre
+        document.write("<table align='center'>");
+        // Bucle para crear la tabla
+        for (let i = 0; i <= 10; i++) {
+            // Muestra el número introducido y el número por el cual se va a multiplicar
+            document.write("<tr><td>" + num + " * " + i + "</td>");
+            // Resultado
+            document.write("<td>" + (num * i) + "</td></tr>");
+        }
+        document.write("</table>");
+
+    </script>
+</body>
+
+</html>

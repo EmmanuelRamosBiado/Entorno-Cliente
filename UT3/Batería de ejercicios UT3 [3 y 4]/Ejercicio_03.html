@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 03</title>
+</head>
+
+<body>
+
+    <script>
+        var miCadena = "cabrales, torta del casar, idiazabal";
+        var miCadenaMayusculas = "Cabrales, Torta del Casar, Idiazabal";
+        var queso = prompt("Introduce el queso que desea:");
+
+        if (miCadena.indexOf(queso) != (-1)) {
+            alert("El queso está en la lista de las minúsculas");
+        } else if (miCadenaMayusculas.indexOf(queso) != (-1)) {
+            alert("ESE QUESO ESTÁ EN LA LISTA DE LAS MAYÚSCULAS")
+        } else if (miCadena.indexOf(queso) == (-1) || miCadenaMayusculas.indexOf(queso) == (-1)) {
+            alert("Ese queso no está en la lista");
+        }
+
+    </script>
+</body>
+
+</html>

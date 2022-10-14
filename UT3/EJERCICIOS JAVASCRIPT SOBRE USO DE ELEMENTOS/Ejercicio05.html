@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Array</title>
+    <meta charset="UTF-8">
+    <style>
+        td {
+            border: solid 1px;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Array normal
+        tabla = new Array(10); 
+        // Array invertido
+        invertido = new Array(10);
+
+        // Bucle donde se meten los números introducidos en las tablas
+        for (let i = 0; i < tabla.length; i++) {
+            var num = parseInt(prompt("Introduce un número:"));
+            // Empieza desde la primera posición
+            tabla[i] = num;
+            // Empieza en la última posición
+            invertido[((invertido.length - 1) - i)] = num;
+        }
+
+        // Creación de la tabla normal
+        document.write("<table align='center'><tr><th>Números que has introducido</th></tr></table>");
+        document.write("<table align='center'><tr>");
+        for (let j = 0; j < tabla.length; j++) {
+            document.write("<td>" + tabla[j] + "</td>");
+        }
+        document.write("</tr></table>")
+
+        // Separador
+        document.write("<br><br>");
+
+        // Creación de la tabla invertida
+        document.write("<table align='center'><tr><th>Tabla invertida</th></tr></table>");
+        document.write("<table align='center'><tr>");
+        for (let k = 0; k < invertido.length; k++) {
+            document.write("<td>" + invertido[k] + "</td>");
+        }
+        document.write("</tr></table>")
+    </script>
+</body>
+
+</html>

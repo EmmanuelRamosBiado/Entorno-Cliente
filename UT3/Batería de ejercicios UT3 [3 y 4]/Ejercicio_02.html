@@ -1,0 +1,41 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 02</title>
+</head>
+
+<body>
+    <p>Introduce una frase</p>
+    <input type="text" id="frase">
+    <p>Carácter aleatorio</p>
+    <input type="button" value="Ver" onclick="aleatorio();">
+    <input type="text" id="random">
+    <p>Límite</p>
+    <input type="button" value="Límite" onclick="limite();">
+    <input type="text" id="limite">
+
+
+    <script>
+        var frase;
+
+        function aleatorio() {
+            frase = document.getElementById('frase').value;
+            var longitud = frase.length;
+            document.getElementById('random').value = frase.charAt(Math.random() * longitud);
+        }
+
+        function limite() {
+            frase = document.getElementById('frase').value;
+            var longitud = frase.length;
+            var caracterAl = frase.charAt(Math.random() * longitud);
+            var letra = frase.charAt(caracterAl);
+            document.getElementById('limite').value = letra;
+            frase = frase.slice(0, letra);
+            document.getElementById('frase').value = frase;
+        }
+    </script>
+
+</body>
+
+</html>

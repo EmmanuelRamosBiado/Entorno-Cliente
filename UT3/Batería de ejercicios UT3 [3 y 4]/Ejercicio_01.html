@@ -1,0 +1,33 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 01</title>
+</head>
+
+<body>
+    <script>
+        var contador = 0;
+        var media = 0;
+        var total = 0;
+
+        do {
+            var num = parseInt(prompt("Introduce un número. Introduce 0 para acabar."));
+
+            if (!isNaN(num) && num != 0) {
+                total += num;
+                contador++;
+            } else if (isNaN(num)) {
+                alert("Has introducido un valor erróneo, vuelve a intentarlo.")
+            }
+
+        } while (num != 0);
+
+        if (num === 0) {
+            media = (total / contador);
+            alert("La media es: " + media);
+        }
+    </script>
+</body>
+
+</html>

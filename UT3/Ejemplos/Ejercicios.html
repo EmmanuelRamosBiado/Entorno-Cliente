@@ -1,0 +1,141 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        #fondo {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id="pantalla" cols="30" rows="10"></textarea>
+
+    <script>
+        // Ejercicio 1
+        /* let numero = parseInt(prompt("Introduce un número:"));
+
+        if(!isNaN(numero)){
+            alert("Es un número.");
+        } else {
+            alert("Ese no es un número.");
+        } */
+
+
+        // Ejercicio 2
+        /* let nombre = prompt("Introduce tu nombre");
+        let apellidos = prompt("Introduce tus apellidos");
+        let salario = parseFloat(prompt("Introduce tu salario"));
+        let edad = parseInt(prompt("Introduce tu edad"));
+
+        if (salrio > 2000) {
+            salario = salario;
+        } else if ((salario > 1000) && (salario < 2000)) {
+            if (edad > 45) {
+                salario = salario * 1.03;
+            } else {
+                salario = salario * 1.10;
+            }
+        } else if (salario < 1000) {
+            if (edad < 30) {
+                salario = 1100;
+            } else if ((edad >= 30) && (edad <= 45)) {
+                salario = salario * 1.03;
+            } else if (edad > 45) {
+                salario = salario * 1.15;
+            }
+        } 
+        alert("Nombre: " + nombre); */
+
+
+        // Ejercicio 3
+        /* let numero = prompt("Introduce un número para ver su factorial:");
+        let factorial = 1;
+
+        for (var i = numero; i >= 1; i--) {
+            factorial = factorial * i;
+        }
+
+        alert("El factorial es: " + factorial); */
+
+
+        // Ejercicio 4
+        /* let intentos = 0;
+        let acierto = parseInt((Math.random() * 1000) + 1);
+        let numero;
+
+        alert("Juguemos a un juego, adivina un número del 1 al 1000")
+
+        do {
+            numero = parseInt(prompt("Introduce un número o escribe 'Salir' para dejar de jugar"));
+
+            if (numero == acierto) {
+                alert("Has acertado");
+                break;
+            } else if (numero > acierto) {
+                alert("El número es menor");
+            } else if (numero < acierto) {
+                alert("El número es mayor");
+            }
+
+            intentos++;
+
+        } while ((numero != "Salida"));
+        alert("Nº de intentos: " + intentos);
+        alert("Fin del juego"); */
+
+
+        // Ejercicio 5
+        /* let estrellas = parseInt((Math.random() * 15) + 5);
+
+        for (var i = 1; i <= estrellas; i++) {
+            for (var j = 1; j <= i; j++) {
+                document.write("* ");
+            }
+            document.write("<br>");
+        } */
+
+
+        // Ejercicio 5 v.2 (Textarea)
+        /* var texto = "";
+        let n;
+        do {
+            n = prompt("Escribe el número de asteriscos que deseas");
+        } while (isNaN(Number(n)) || n <= 0);
+
+        for (let i = 1; i <= n; i++) {
+            for (let j = 1; j <= i; j++) {
+                texto = texto + "* ";
+            }
+            texto = texto + "\n";
+        }
+
+        if (n > document.getElementById("pantalla").rows) {
+            document.getElementById("pantalla").cols = 2 * n;
+            document.getElementById("pantalla").rows = n;
+        }
+
+        document.getElementById("pantalla").value = texto; */
+
+
+        // Ejercicio 6
+        /* let rojo = parseInt(Math.random() * 255);
+        let verde = parseInt(Math.random() * 255);
+        let azul = parseInt(Math.random() * 255);
+        document.write(
+            `<div id='fondo' ` +
+            `style='background-color:rgb(${rojo},${verde},${azul})'>` +
+            `</div>`
+        ); */
+
+
+    </script>
+    
+</body>
+
+</html>
