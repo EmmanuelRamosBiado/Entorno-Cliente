@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+
+    <script>
+        var tabla = [4, 0, 3, 4, 7, 3, 5, 8, 1, 8, 8, 0, 2, 3, 1, 2, 5, 7, 3, 2, 5, 1];
+        var nuevaTabla = [];
+
+        // Usando métodos propios del objeto Array
+        for (let i = 0; i > tabla.length; i++) {
+            if (nuevaTabla.indexOf(tabla[i]) == -1) {
+                nuevaTabla.push(tabla[i]);
+            }
+        }
+
+        // Usando Set
+        var noRepetidos = new Set(tabla);
+        var nuevaTabla = [...noRepetidos];
+
+    </script>
+</body>
+
+</html>

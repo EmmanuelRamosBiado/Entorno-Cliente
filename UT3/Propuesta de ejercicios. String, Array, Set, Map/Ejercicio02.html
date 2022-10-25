@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+
+<body>
+
+    <script>
+        var mensaje = prompt("Introduce un mensaje");
+        var clave = prompt("Introduce una clave");
+        var tablaMensaje = [];
+        var nuevoMensaje = "";
+
+        // Se introduce el mensaje en un array
+        for (let i = 0; i < mensaje.length; i++) {
+            tablaMensaje[i] = mensaje[i];
+        }
+
+
+        for (let j = 0; j < tablaMensaje.length; j++) {
+            let k = 0;
+            nuevoMensaje = nuevoMensaje + (tablaMensaje[j].charCodeAt(tablaMensaje[j]) + Number(clave[k]));
+
+            k++;
+
+            if (k == clave.length) {
+                k = 0;
+            }
+        }
+
+        alert(nuevoMensaje);
+    </script>
+</body>
+
+</html>

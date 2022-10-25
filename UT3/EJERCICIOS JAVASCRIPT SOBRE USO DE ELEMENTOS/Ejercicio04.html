@@ -3,12 +3,48 @@
 <head>
     <title>Desglose</title>
     <meta charset="UTF-8">
+    <style>
+        td,
+        th {
+            border: solid 1px;
+            text-align: center;
+            padding: 5px;
+        }
+    </style>
 </head>
 
 <body>
     <script>
+
+        tabla = new Array[500, 200, 100, 50, 20, 10, 5, 2, 1];
+
+        function desglose(numero, array) {
+
+            var contador = 0;
+            do {
+                numero -= array[i];
+                contador++;
+            } while (numero >= array[i]);
+            i++;
+            return contador;
+        }
+
         var num = parseInt(prompt("Introduce un número"));
-        
+
+        document.write("<table><tr><th>DESGLOSES DE LA CANTIDAD: " + num + "</th></tr></table>");
+        document.write("<br><br>");
+        document.write("<table>");
+        document.write("<tr><td>Unidades de 500: " + desglose(num, tabla) + "</td></tr>");
+        document.write("<tr><td>Unidades de 200: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 100: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 50: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 20: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 10: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 5: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 2: " + +"</td></tr>");
+        document.write("<tr><td>Unidades de 1: " + +"</td></tr>");
+        document.write("</table>");
+
     </script>
 </body>
 
