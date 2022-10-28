@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+    <style>
+        th{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez = 0;
+        for (let i = 0; i <= 10000; i++) {
+            numAleatorio = Math.floor((Math.random() * 10) + 1);
+
+            switch (numAleatorio) {
+                case 1:
+                    uno++;
+                    break;
+                case 2:
+                    dos++;
+                    break;
+                case 3:
+                    tres++;
+                    break;
+                case 4:
+                    cuatro++;
+                    break;
+                case 5:
+                    cinco++;
+                    break;
+                case 6:
+                    seis++;
+                    break;
+                case 7:
+                    siete++;
+                    break;
+                case 8:
+                    ocho++;
+                    break;
+                case 9:
+                    nueve++;
+                    break;
+                case 10:
+                    diez++;
+                    break;
+            }
+
+        }
+
+        document.write("<table><tr><th>Frecuencias</th></tr>");
+
+        for (let j = 0; j <= 10; j++) {
+            document.write("<tr><td>Número " + j + "</td>");
+            document.write("<td>b</td></tr>");
+        }
+
+        document.write("</table>")
+
+
+    </script>
+</body>
+
+</html>
