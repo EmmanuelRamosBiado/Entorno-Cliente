@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>CARRUSEL DE IMÁGENES</p>
+    <img id="cjtarjeta" src="./img/amex1.gif" width="300" height="200" alt="amex">
+
+    <script>
+        var tarjetas = ["amex1", "cashu", "cirrus1", "dinersclub", "mastercard1", "paypal", "visa_electron", "visa1"];
+        var i = 0;
+        function cambiar() {
+            document.getElementById("cjtarjeta").src = "./img/" + tarjetas[i] + ".gif";
+            i = i + 1;
+            if (i == tarjetas.length) {
+                i = 0;
+            }
+        }
+
+        var intervalo = setInterval(cambiar, 2000);
+    </script>
+    
+</body>
+
+</html>
