@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <label for="color">Color: <input type="text" id="color"></label><br><br>
+    <label for="ruedas">Ruedas: <input type="text" id="ruedas"></label><br><br>
+    <h1>Motor:</h1>
+    <label for="cilindros">Cilindros: <input type="text" id="cilindros"></label><br><br>
+    <label for="tamanio">Tamaño: <input type="text" id="tamanio"><br></label><br>
+
+    <script>
+        var miHonda = {
+            color: "rojo", ruedas: 4, motor: {
+                cilindros: 4,
+                tamanio: 2.2
+            }
+        };
+
+        document.getElementById("color").value = miHonda.color;
+        document.getElementById("ruedas").value = miHonda.ruedas;
+        document.getElementById("cilindros").value = miHonda.motor.cilindros;
+        document.getElementById("tamanio").value = miHonda.motor.tamanio;
+    </script>
+</body>
+
+</html>
