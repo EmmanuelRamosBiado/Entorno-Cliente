@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>MENÚ</h1>
+
+    <form action="" name="formulario">
+        PRIMER PLATO <select name="primero">
+            <option value="garbanzos">Garbanzos</option>
+            <option value="lentejas">Lentejas</option>
+            <option value="judías verdes">Judías verdes</option>
+            <option value="paella">Paella</option>
+        </select><br>
+
+        SEGUNDO PLATO <select name="segundo" size="4">
+            <option value="pollo">Pollo</option>
+            <option value="salmón">Salmón</option>
+            <option value="ensalada">Ensalada</option>
+            <option value="tortilla">Tortilla</option>
+        </select><br>
+
+        POSTRES <br>
+        <input type="radio" name="postre" value="yogur">Yogur
+        <input type="radio" name="postre" value="fruta">Fruta
+        <input type="radio" name="postre" value="flan">Flan
+        <br>
+
+        <input type="button" value="VER" onclick="verMenu()"><br>
+
+    </form>
+
+    <textarea name="panel" id="panel" cols="30" rows="10"></textarea>
+
+    <script>
+
+        function verMenu() {
+            var plato1 = document.getElementsByName('primero')[0].value;
+            var plato2 = document.getElementsByName('segundo')[0].value;
+            var postre3;
+            var mensaje = "";
+
+            for (let i = 0; i < document.getElementsByName('postre').length; i++) {
+                if(document.getElementsByName('postre')[i].checked){
+                    postre3 = document.getElementsByName('postre')[i].value;
+                } 
+            }
+
+            mensaje += "HAS SELECCIONADO: \n";
+            mensaje += "Primer plato: " + plato1 + "\n";
+            mensaje += "Segundo plato: " + plato2 + "\n";
+            mensaje += "Postre: " + postre3 + "\n";
+
+            document.getElementById('panel').value = mensaje;
+        }
+
+    </script>
+</body>
+
+</html>

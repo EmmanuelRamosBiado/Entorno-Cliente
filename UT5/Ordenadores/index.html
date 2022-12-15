@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenadores</title>
+</head>
+
+<body>
+    <form>
+        Marca: <input type="text" id="marca"><br>
+        Modelo: <input type="number" id="modelo"><br>
+        Memoria RAM: <input type="number" id="ram"><br>
+        Microprocesador: <input type="text" id="microprocesador"><br>
+        Gráfica: <input type="text" id="grafica"><br>
+
+        Tipo:
+        Portátil <input type="radio" id="portatil" name="tip" value="portatil">
+        Sobremesa <input type="radio" id="sobremesa" name="tip" value="sobremesa"><br>
+
+        <input type="button" value="Añadir" onclick="accion(this.value)">
+        <input type="button" value="Consultar" onclick="accion(this.value)">
+        <input type="button" value="Eliminar" onclick="accion(this.value)">
+        <input type="button" value="Borrar Campos" onclick="accion(this.value)"><br>
+
+        <textarea name="cajaTexto" id="cajaTexto" cols="30" rows="10"></textarea><br>
+
+    </form>
+
+    <script>
+        var tablaOrdenadores = new Array();
+        var marca;
+        var modelo;
+        var ram;
+        var microprocesador;
+        var grafica;
+        var tipo;
+
+        function accion(valor) {
+            switch (valor) {
+                case "Añadir":
+                    añadir();
+                    break;
+
+                case "Consultar":
+                    consultar();
+                    break;
+
+                case "Eliminar":
+                    alert("eliminar");
+                    break;
+
+                case "Borrar Campos":
+                    borrar();
+                    break;
+            }
+        }
+
+        function Ordenador(marca, modelo, ram, microprocesador, grafica, tipo) {
+            this.marca = marca;
+            this.modelo = modelo;
+            this.ram = ram;
+            this.microprocesador = microprocesador;
+            this.grafica = grafica;
+            this.tipo = tipo;
+        }
+
+        function capturar() {
+            marca = document.getElementById('marca').value;
+            modelo = document.getElementById('modelo').value;
+            ram = document.getElementById('ram').value;
+            microprocesador = document.getElementById('microprocesador').value;
+            grafica = document.getElementById('grafica').value;
+
+            if(document.getElementById('portatil').checked===true){
+                tipo = "portatil";
+            }
+            if (document.getElementById('sobremesa').checked===true){
+                tipo = "sobremesa";
+            }
+        }
+
+        function añadir() {
+            capturar();
+            var nuevo = new Ordenador(marca, modelo, ram, microprocesador, grafica, tipo);
+            tablaOrdenadores.push(nuevo);
+            console.log(tablaOrdenadores);
+        }
+
+        function consultar(){
+            
+        }
+
+        function borrar() {
+            document.getElementById('marca').value = "";
+            document.getElementById('modelo').value = "";
+            document.getElementById('ram').value = "";
+            document.getElementById('microprocesador').value = "";
+            document.getElementById('grafica').value = "";
+            document.getElementById('portatil').checked = "";
+            document.getElementById('sobremesa').checked = "";
+        }
+    </script>
+</body>
+
+</html>

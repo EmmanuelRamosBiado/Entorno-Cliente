@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+
+<body>
+    <!-- Pantalla de la calculadora -->
+    <input type="text" id="caja"><br>
+
+    <!-- Botones -->
+    <input type="button" value="7" onclick="escribir(this.value)">
+    <input type="button" value="8" onclick="escribir(this.value)">
+    <input type="button" value="9" onclick="escribir(this.value)">
+    <input type="button" value="/" onclick="escribir(this.value)"><br>
+
+    <input type="button" value="4" onclick="escribir(this.value)">
+    <input type="button" value="5" onclick="escribir(this.value)">
+    <input type="button" value="6" onclick="escribir(this.value)">
+    <input type="button" value="*" onclick="escribir(this.value)"><br>
+
+    <input type="button" value="1" onclick="escribir(this.value)">
+    <input type="button" value="2" onclick="escribir(this.value)">
+    <input type="button" value="3" onclick="escribir(this.value)">
+    <input type="button" value="-" onclick="escribir(this.value)"><br>
+
+    <input type="button" value="0" onclick="escribir(this.value)">
+    <input type="button" value="=" onclick="calcular()">
+    <input type="button" value="C" onclick="borrar()">
+    <input type="button" value="+" onclick="escribir(this.value)"><br>
+
+    <script>
+
+        function calcular() {
+            var operacion = document.getElementById('caja').value;
+            document.getElementById('caja').value = eval(operacion);
+        }
+
+        function escribir(num) {
+            document.getElementById('caja').value += num;
+        }
+
+        function borrar() {
+            document.getElementById('caja').value = "";
+        }
+
+    </script>
+
+</body>
+
+</html>

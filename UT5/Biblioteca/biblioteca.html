@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+</head>
+
+<body>
+    <h1>Biblioteca</h1>
+    <label for="titulo">Título: <input type="text" id="titulo"></label><br><br>
+    <label for="autor">Autor: <input type="text" id="autor"></label><br><br>
+    <label for="editorial">Editorial: <input type="text" id="editorial"></label><br><br>
+    <label for="año">Año de Edición: <input type="date" id="año"></label><br><br>
+    <textarea name="cajaTexto" id="cajaTexto" cols="30" rows="10"></textarea><br>
+    <input type="button" value="GUARDAR" onclick="guardarLibro()">
+    <input type="button" value="VISUALIZAR" onclick="visualizar()">
+
+    <script>
+        var listaLibros = new Array();
+
+        function guardarLibro() {
+            var libro = new Object();
+            libro.titulo = document.getElementById("titulo").value;
+            libro.autor = document.getElementById("autor").value;
+            libro.editorial = document.getElementById("editorial").value;
+            libro.años = document.getElementById("año").value;
+
+            listaLibros.push(libro);
+
+            alert("El libro ha sido guardado");
+        }
+
+        function visualizar() {
+            var mensaje = "";
+
+            
+
+            document.getElementById('cajaTexto').value = mensaje;
+        }
+    </script>
+</body>
+
+</html>

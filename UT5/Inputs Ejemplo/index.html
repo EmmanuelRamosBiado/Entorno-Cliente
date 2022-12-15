@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" name="form-extras">
+        <label for="nombre">Nombre: <input type="text" id="nombre"></label><br><br>
+
+        <label for="apellidos">Apellidos: <input type="text" id="apellidos"></label><br><br>
+
+        <input type="radio" name="formaPago" id="mensual" value="Mensual" /><label for="mensual">Mensual</label>
+        <input type="radio" name="formaPago" id="trimestral" value="Trimestral" /><label
+            for="trimestral">Trimestral</label>
+        <input type="radio" name="formaPago" id="anual" value="Anual" /><label for="anual">Anual</label><br><br>
+
+        <input type="checkbox" name="seguro" id="todoRiesgo" value="Todo riesgo"><label for="todoRiesgo">Todo
+            riesgo</label>
+        <input type="checkbox" name="seguro" id="enchufable" value="Enchufable"><label
+            for="enchufable">Enchufable</label>
+        <input type="checkbox" name="seguro" id="llantasAleacion" value="LLantas de aleación"><label
+            for="llantasAleacion">Llantas de aleación</label><br><br>
+
+        <input type="button" value="CALCULAR">
+        <input type="button" value="Ver selecciones" onclick="verSeleccion()"><br><br>
+    </form>
+    <label for="total">Total: <input type="text" name="total"> Euros</label>
+
+    <script>
+        var periodopago = document.getElementsByName('formaPago');
+        var opcionescheck = document.getElementsByTagName('input');
+        var texto = "";
+        var Total = 0;
+        function verSeleccion() {
+            for (let i = 0; i < periodopago.length; i++) {
+                if (periodopago[i].checked) {
+                    alert("Forma de pago elegida: " + periodopago[i].value);
+                    break;
+                }
+            }
+
+            alert(opcionescheck[4].value);
+
+            for (let j = 4; j < opcionescheck.length; j++) {
+                if (opcionescheck[j].checked) {
+                    texto += opcionescheck[j].value + " ";
+                    switch (opcionescheck[j].value) {
+                        case "Todo Riesgo":
+
+                            break;
+
+                        case "Enchufable":
+
+                            break;
+
+                        case "Llantas de aleación":
+
+                            break;
+
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
