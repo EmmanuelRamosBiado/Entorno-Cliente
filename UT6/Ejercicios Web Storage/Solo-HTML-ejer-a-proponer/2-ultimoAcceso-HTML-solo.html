@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fecha y Hora último acceso</title>
+</head>
+<body>
+	<form id="form">
+		Nombre:
+		<input type="text" id="nom">
+		<br>
+		Apellido:
+		<input type="text" name="apellido">
+		<br>
+		<input type="button" value="entrar" onclick="acceso()">
+	</form>
+	<div id="mensaje">
+		
+	</div>
+
+	<script>
+		
+		function acceso() {
+			var nombre = document.getElementById('nom').value;
+			var apell = document.getElementsByName('apellido')[0].value;
+			let fechaHoy = new Date();
+			let msg = "";
+
+			var recuperar = window.localStorage.getItem(nombre);
+
+			if(recuperar != null){		
+				msg = "Bienvenoido de vielta, Sr. " + apell + ". Su último inicio des esión fue " + recuperar;
+
+			} else{
+				msg = "Bienvenida a tu primera visita, Sr. " + apell;
+			}
+
+			window.localStorage.setItem(nombre, fechaHoy);
+			document.getElementById('mensaje').innerHTML = msg;
+		}
+
+	</script>
+	
+</body>
+</html>

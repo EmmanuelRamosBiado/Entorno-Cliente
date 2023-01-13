@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÚLTIMO ACCESO</title>
+</head>
+
+<body>
+    Nombre: <input type="text" id="nombre"><br>
+    Apellidos: <input type="text" id="apellidos"><br>
+    <input type="button" value="Entrar" onclick="acceso()">
+    <p id="mensaje"></p>
+
+    <script>
+
+        var almacenar = new Map();
+
+        function acceso() {
+
+            var nom = document.getElementById("nombre").value;
+            var apell = document.getElementById("apellidos").value;
+
+            
+
+
+            document.getElementById("mensaje").innerHTML = "Bienvenido de vuelta, Sr. " + apell + "Su último acceso fue el ";
+        }
+
+        function guardarFecha(){
+            
+        }
+    </script>
+</body>
+
+</html>
