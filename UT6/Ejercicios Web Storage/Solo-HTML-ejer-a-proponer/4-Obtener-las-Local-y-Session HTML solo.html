@@ -1,50 +1,104 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ejemplo de almacenamiento local con HTML5</title>
-<style type="text/css">
-body {
-	font-family: sans-serif;
-}
-span#mensajes {
-	color: blue;	
-}
-</style>
+    <title>Ejemplo de almacenamiento local con HTML5</title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+
+        span#mensajes {
+            color: blue;
+        }
+    </style>
 </head>
-<body>
-<h1>EJEMPLO DE ALMACENAMIENTO LOCAL CON HTML5</h1>
 
-<span id="mensajes"></span><br/><br/>
-AREA DE ALMACENAMIENTO: 
-<select id="tipo">
-<option value="local">LOCAL</option>
-<option value="sesion">SESION</option>
-</select><br/>
-CLAVE: <input type="text" id="clave"/><br/>
-VALOR: <input type="text" id="valor"/><br/><br/>
-<button>GUARDAR</button> 
-<button>ELIMINAR</button> 
-<button>REFRESCAR</button> 
-<button>COMPROBAR COMPATIBILIDAD DEL NAVEGADOR</button>
+<body onload="refrescar()">
+    <h1>EJEMPLO DE ALMACENAMIENTO LOCAL CON HTML5</h1>
 
-<br/><br/>
-<table>
-<tr>
-<td>
-CLAVES Y VALORES EN LOCAL STORAGE:<br/>
-<textarea rows="10" cols="50" id="almacenamientoLocal" readonly="readonly"></textarea>
-</td>
-<td>
-CLAVES Y VALORES EN SESSION STORAGE:<br/>
-<textarea rows="10" cols="50" id="almacenamientoSesion" readonly="readonly"></textarea>
-</td>
-</tr>
-</table>
-<p>Puedes probar a guardar valores con almacenamiento local y de sesi&oacute;n, cierra y abre el navegador o la pesta&ntilde;a y observar&aacute;s que se pierden los datos almacenados en sesi&oacute;n pero no los locales.</p>
-<p>Tambi&eacute;n puedes probar a abrir dos ventanas guardar valores con almacenamiento local en una de ellas y ver como aparecen en la otra.</p>
+    <span id="mensajes"></span><br /><br />
+    AREA DE ALMACENAMIENTO:
+    <select id="tipo">
+        <option value="local">LOCAL</option>
+        <option value="sesion">SESION</option>
+    </select><br />
+    CLAVE: <input type="text" id="clave" /><br />
+    VALOR: <input type="text" id="valor" /><br /><br />
+    <button onclick="guardar()">GUARDAR</button>
+    <button onclick="eliminar()">ELIMINAR</button>
+    <button onclick="refrescar()">REFRESCAR</button>
+    <button>COMPROBAR COMPATIBILIDAD DEL NAVEGADOR</button>
 
+    <br /><br />
+    <table>
+        <tr>
+            <td>
+                CLAVES Y VALORES EN LOCAL STORAGE:<br />
+                <textarea rows="10" cols="50" id="almacenamientoLocal" readonly="readonly"></textarea>
+            </td>
+            <td>
+                CLAVES Y VALORES EN SESSION STORAGE:<br />
+                <textarea rows="10" cols="50" id="almacenamientoSesion" readonly="readonly"></textarea>
+            </td>
+        </tr>
+    </table>
+    <p>Puedes probar a guardar valores con almacenamiento local y de sesi&oacute;n, cierra y abre el navegador o la
+        pesta&ntilde;a y observar&aacute;s que se pierden los datos almacenados en sesi&oacute;n pero no los locales.
+    </p>
+    <p>Tambi&eacute;n puedes probar a abrir dos ventanas guardar valores con almacenamiento local en una de ellas y ver
+        como aparecen en la otra.</p>
+
+
+    <script>
+
+        function guardar() {
+            let key = document.getElementById('clave').value;
+            let value = document.getElementById('valor').value;
+            let type = document.getElementById('tipo').value;
+
+            if (type === 'local') {
+                localStorage.setItem(key, value);
+            } else if (type === 'sesion') {
+                sessionStorage.setItem(key, value);
+            }
+
+            document.getElementById('mensajes').innerHTML = "Se han guardado los datos introducidos";
+            setTimeout(() => { document.getElementById('mensajes').innerHTML = "" }, 3 * 1000);
+
+            limpiarCajas();
+
+        }
+
+        function eliminar() {
+            let key = document.getElementById('clave').value;
+            let type = document.getElementById('tipo').value;
+
+            if (type === 'local') {
+                localStorage.removeItem(key);
+            } else if (type === 'sesion') {
+                sessionStorage.removeItem(key);
+            }
+
+            document.getElementById('mensajes').innerHTML = "Se han borrado los datos seleccionados";
+            setTimeout(() => { document.getElementById('mensajes').innerHTML = "" }, 3 * 1000);
+
+            limpiarCajas();
+        }
+
+        function refrescar() {
+
+        }
+
+        function limpiarCajas() {
+
+            document.getElementById('clave').value = "";
+            document.getElementById('valor').value = "";
+        }
+    </script>
 </body>
+
 </html>
