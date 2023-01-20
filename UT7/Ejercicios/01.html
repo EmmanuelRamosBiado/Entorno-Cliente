@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .claseHijo{
+            color: red;
+        }
+
+        .claseResultado{
+            color: greenyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="padre">
+        <p id="child1">Contenido del parrafo ...</p>
+        <p id="child2">Contenido del parrafo ...</p>
+        <p id="child3">Contenido del parrafo ...</p>
+    </div>
+    <button onclick="Obtenerhijos('padre');">Obtención de hijos</button>
+    <div id="resultados"></div>
+
+    <script>
+        function Obtenerhijos(elemento){
+            let mensaje = "";
+
+            let nodoPadre = document.getElementById(elemento);
+            let nodoHijos = nodoPadre.children;
+            
+            for (let i = 0; i < nodoHijos.length; i++) {
+
+                nodoHijos[i].className = "claseHijo";
+            }
+
+            mensaje += nodoPadre.id + " tiene " + nodoHijos.length + "</br>";
+            for (let j = 0; j < nodoHijos.length; j++) {
+                mensaje += nodoHijos[j].id + "</br>";
+            }
+
+            document.getElementById('resultados').className= "claseResultado";
+            document.getElementById('resultados').innerHTML = mensaje;
+            
+        }
+    </script>
+</body>
+
+</html>
