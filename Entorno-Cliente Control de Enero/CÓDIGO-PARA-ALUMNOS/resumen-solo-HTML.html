@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Europa</title>
+    <style type="text/css">
+        body {
+            margin-left: 30px;
+            font-family: sans-serif;
+        }
+
+        div {
+            margin: auto;
+        }
+
+        .estiloForm {
+            width: 330px;
+            padding: 10px;
+            background-color: #f3f3f3;
+            border: solid 2px black;
+        }
+
+        .estiloForm label {
+            display: block;
+            width: 120px;
+            float: left;
+            text-align: right;
+            margin-bottom: 35px;
+            padding-right: 20px;
+        }
+
+        br {
+            clear: left;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h2>RESUMEN FINAL SOLICITUD</h2>
+    </center>
+    <div class="estiloForm">
+        <img src="" alt=""><br><br>
+        Identification Number:<input type="text"><br><br>
+        Nacionalidades: <input type="text"><br><br>
+        Ciudad domicilio:<input type="text">
+    </div>
+
+    <script>
+        // Recupero el objeto del Session Storage
+        let ciudadano = window.sessionStorage.getItem("ciudadano");
+
+        // Paso de JSON a objeto ciudadano
+        let persona = JSON.parse(ciudadano);
+
+        // Uso la foto de la persona usando el DNI que se ha introducido
+        document.getElementsByTagName('img')[0].src = persona.idn + ".jpg";
+
+        // Relleno la información de la persona en los inputs
+        document.getElementsByTagName('input')[0].value = persona.idn;
+        document.getElementsByTagName('input')[1].value = persona.nation;
+        document.getElementsByTagName('input')[2].value = persona.city;
+    </script>
+</body>
+
+</html>

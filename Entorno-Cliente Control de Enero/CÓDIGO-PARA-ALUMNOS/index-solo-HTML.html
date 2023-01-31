@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        body {
+            margin-left: 30px;
+            font-family: sans-serif;
+        }
+
+        h4 {
+            margin: 0;
+        }
+
+        div {
+            float: left;
+        }
+
+        .estiloForm,
+        #encuadraImagen,
+        #datos {
+            background-color: #f3f3f3;
+            border: solid 2px black;
+            margin-left: 10px;
+            width: 300px;
+        }
+
+        .estiloForm {
+            width: 330px;
+            padding: 10px;
+        }
+
+        #datos {
+            margin-top: 20px;
+            height: 226px;
+            padding: 10px;
+        }
+
+        #encuadraImagen {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+        }
+
+        .estiloForm label {
+            display: block;
+            width: 120px;
+            float: left;
+            text-align: right;
+            margin-bottom: 35px;
+            padding-right: 20px;
+        }
+
+        br {
+            clear: left;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            margin: 25px 5px 10px 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DELEGACIÓN DE PASAPORTES DE EUROPA</h1>
+
+    <div class="estiloForm">
+
+        <form>
+            <img src="parlamento.jpg" alt="" style="height: 5cm;width: 8cm;">
+            <h3>Bienvenid@ sr/a:</h3>
+            D.N.I.: <input name="dni" type="text" /><br /><br>
+            <h5>Puede disponer de dos nacionalidades.</h5>
+            <h5>Nacionalidad:</h5><br>
+            <input name="nacionalidad" type="checkbox" value="Española" />Española<br />
+            <input name="nacionalidad" type="checkbox" value="Francesa" />Francesa<br />
+            <input name="nacionalidad" type="checkbox" value="Alemana" />Alemana<br />
+            <input name="nacionalidad" type="checkbox" value="Italiana" />Italiana<br />
+            <br>
+            Ciudad de domicilio: <select id="ciudad">
+                <option value="0">Selecciona ciudad</option>
+                <option value="Madrid">Madrid</option>
+                <option value="París">París</option>
+                <option value="Berlín">Berlín</option>
+                <option value="Roma">Roma</option>
+            </select><br>
+            <h4>¿Desea iniciar el proceso de solicitud?</h4><br />
+            <input type="button" name="boton" value="Aceptar" /> <input type="button" name="boton" value="Cancelar" />
+        </form>
+    </div>
+
+    <script>
+
+        // String para las nacionalidades 
+        let nacionalidades;
+
+        // Constructor del objeto
+        function ciudadano(dni, nacion, ciudad) {
+            this.idn = dni;
+            this.nation = nacion;
+            this.city = ciudad;
+        }
+
+        // Función cuando se pulsa el botón de aceptar
+        function aceptar(event) {
+
+            // Se comprueba el número de nacionalidades
+            if (nacionalidades <= 2) {
+                // Si tiene 1 o 2 nacionalidades se redirige a la página de espera
+                window.location = "enespera-solo-HTML.html";
+
+            } else {
+                // Aviso si se han introducido más de 2 nacionalidades
+                alert("Has introducido más de 2 nacionalidades");
+
+                // Esto reinicia el select
+                document.getElementsByTagName('select')[0].selectedIndex = 0;
+            }
+        }
+
+        // Función cuando se pulsa el botón de cancelar
+        function cancelar(event) {
+
+            // Se cierra la ventana
+            window.close();
+        }
+
+        // Función cuando se cambia el select
+        function elegirCiudad(event) {
+
+            // Se resetea el número de nacionalidades si se tiene que repetir
+            nacionalidades = 0;
+
+            // Se captura el DNI
+            let dni = document.getElementsByName('dni')[0].value;
+
+            // String de las ciudades
+            let nacion = "";
+
+            // Se captura la ciudad
+            let ciudad = document.getElementsByTagName('select')[0].value;
+
+            // Esto es para comprobar los checkbox
+            for (let i = 0; i < 4; i++) {
+                // Comprueba si los checkbox están marcados
+                if (document.getElementsByName('nacionalidad')[i].checked == true) {
+                    // Se añade la nacionalidad al String
+                    nacion += document.getElementsByName('nacionalidad')[i].value + " ";
+
+                    // Se incrementa en 1 nacionalidades
+                    nacionalidades++;
+                }
+            }
+
+            // Se crea un nuevo objeto
+            var cliente = new ciudadano(dni, nacion, ciudad);
+
+            // El objeto se transforma en formato JSON
+            let persona = JSON.stringify(cliente);
+
+            // Se guarda en el SessionStorage
+            window.sessionStorage.setItem("ciudadano", persona);
+        }
+
+        function inicio() {
+
+            // Cuando la página se termina de cargar
+            if (document.readyState == "complete") {
+                // Oyente de evento cuando pulsas el botón de aceptar
+                document.getElementsByTagName("input")[5].addEventListener("click", aceptar, false);
+
+                // Oyente de evento cuando pulsas el botón de cancelar
+                document.getElementsByTagName("input")[6].addEventListener("click", cancelar, false);
+
+                // Oyente de evento cuando cambias la ciudad en el select
+                document.getElementsByTagName('select')[0].addEventListener("change", elegirCiudad, false);
+            }
+        }
+
+        // Oyente de evento de la carga de la página
+        document.addEventListener("readystatechange", inicio, false);
+    </script>
+</body>
+
+</html>

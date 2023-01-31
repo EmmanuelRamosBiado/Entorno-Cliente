@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <input type="button" value="Pulsa">
+    <input type="text">
+
+    <script>
+        let num = 0;
+        function aumentar(event){
+            
+            num = num + 1;
+            document.getElementsByTagName('input')[1].value = num;
+
+        }
+
+        console.log(document.readyState);
+
+        function eventoBoton(event){
+            
+            document.getElementsByTagName('input')[0].addEventListener('click', aumentar, false);
+        }
+
+        document.addEventListener('readystatechange', eventoBoton, false);
+    </script>
+</body>
+</html>
