@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercio 2</title>
+</head>
+
+<body>
+
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" id="nombre"><br>
+
+    <label for="contraseña">Contraseña: </label>
+    <input type="password" name="contraseña" id="contraseña"><br>
+
+    <script>
+
+        function asignarEventos(event) {
+            document.getElementsByTagName('input')[0].addEventListener("keydown", focoContraseña);
+            document.getElementsByTagName('input')[1].addEventListener("keydown", transmision);
+        }
+
+        function focoContraseña(event) {
+
+            if (event.key == "Enter") {
+                document.getElementsByTagName('input')[1].focus();
+            }
+        }
+
+        function transmision(event) {
+
+            if (event.key == "Enter") {
+                alert("Iniciando transmisión");
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", asignarEventos);
+    </script>
+</body>
+
+</html>

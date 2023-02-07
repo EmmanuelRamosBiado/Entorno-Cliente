@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 5</title>
+</head>
+
+<body>
+    <label>Elija un sabor de nieve:
+        <select class="nieve">
+            <option value="">Seleccione Uno …</option>
+            <option value="chocolate">Chocolate</option>
+            <option value="sardina">Sardina</option>
+            <option value="vainilla">Vainilla</option>
+        </select>
+    </label>
+    <div class="resultado"></div>
+
+    <script>
+
+        function asignarEventos(event){
+            document.getElementsByTagName('select')[0].addEventListener('change', cambioSelect);
+        }
+
+        function cambioSelect(event){
+            document.getElementsByTagName('div')[0].innerHTML = "Te gusta el sabor a " + document.getElementsByTagName('select')[0].value;
+        }
+
+        document.addEventListener("DOMContentLoaded", asignarEventos);
+    </script>
+</body>
+
+</html>

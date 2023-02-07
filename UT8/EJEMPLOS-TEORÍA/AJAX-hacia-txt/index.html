@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX HACIA TXT</title>
+</head>
+
+<body>
+    <h1>Deja a ajax que cambie el texto</h1>
+    <input type="button" value="Cambiar contenido">
+    <p id="contenido"></p>
+
+    <script>
+
+        let xhr;
+
+        function enviarPeticionAJAX(event) {
+            document.getElementsByTagName('input')[0].disabled = true;
+            xhr = new XMLHttpRequest();
+            xhr.addEventListener('readystatechange', gestionarRespuesta, false);
+            xhr.open('GET', 'text.txt', true);
+            xhr.send(null);
+        }
+
+        function gestionarRespuesta(event) {
+            if (event.target.readyState == 4 && event.target.status == 200) {
+
+                document.getElementsByTagName('input')[0].disabled = false;
+                document.getElementById('contenido').innerHTML = event.target.responseText;
+            }
+        }
+
+        function asignareventos(event) {
+            
+                document.getElementsByTagName('input')[0].addEventListener('click', enviarPeticionAJAX, false);
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', asignareventos);
+    </script>
+</body>
+
+</html>

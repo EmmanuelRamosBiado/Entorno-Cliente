@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 4</title>
 </head>
 
 <body>
@@ -18,20 +18,20 @@
     <a href="https://www.iestetuan.es">Pulsa para generar un avance y poder volver atrás con back</a>
 
     <script>
-        function irAdel(event){
+        function irAdel(event) {
             window.history.forward();
         }
 
-        function irAtrs(event){
+        function irAtrs(event) {
             window.history.back();
         }
 
-        function cambioEvento(event){
-            document.getElementsByTagName('div')[1].addEventListener('click', irAdel, false);
-            document.getElementsByTagName('div')[2].addEventListener('click', irAtrs, false);
+        function asignarEvento(event) {
+            document.getElementsByTagName('div')[1].addEventListener('click', irAdel);
+            document.getElementsByTagName('div')[2].addEventListener('click', irAtrs);
         }
 
-        document.addEventListener('DOMContentLoaded', cambioEvento, false);
+        document.addEventListener('DOMContentLoaded', asignarEvento, false);
     </script>
 </body>
 
