@@ -1,0 +1,63 @@
+﻿<!DOCTYPE HTML>
+<HTML>
+
+<HEAD>
+    <TITLE>PRIMER EJERCICIO</TITLE>
+</HEAD>
+
+<BODY>
+    <FORM name="humano">
+        <center>
+            <p>Se trata de diseñar un pequeño formulario que detecte</p>
+            <p>en el lado del cliente la presencia o no de una máquina</p>
+            <input type="text" name="referencia" align="center"
+                style="font-size:100%;text-align:center;font-family:fantasy;">
+            <h3 align="center">Introduzca en la siguiente caja los caracteres de la caja superior</h3>
+            <input type="text" name="cliente" style="font-size:100%;text-align:center;" autofocus><br><br>
+            <input type="button" value="Aceptar" onclick="validar()">
+        </center>
+    </form>
+
+    <script>
+        var numAleatorio;
+        var tablaAleatorios = [];
+        var contador = 0;
+        var captcha = new String();
+
+        // Bucle para introducir los números aleatorios en una tabla
+        do {
+            // Se generan los números aleatorios
+            numAleatorio = Math.round(((Math.random() * (122 - 65)) + 65));
+
+            // Si el número aleatorio está entre el 91 y el 96, el índice se le resta 1
+            if (numAleatorio >= 91 && numAleatorio <= 96) {
+                contador--;
+                // Si no, se introduce en la tabla y el índice se incrementa en 1
+            } else {
+                tablaAleatorios.push(numAleatorio);
+                contador++;
+            }
+        } while (contador < 8)
+
+        // En este for se pasa de un número a una letra y se le añade a la variable captcha
+        for (let i = 0; i < tablaAleatorios.length; i++) {
+            captcha += String.fromCharCode(tablaAleatorios[i]);
+        }
+
+        // Se introduce el valor de la variable captcha en la primera caja de texto
+        document.getElementsByName('referencia')[0].value = captcha;
+
+        // Función para validar
+        function validar() {
+            if (document.getElementsByName('referencia')[0].value == document.getElementsByName('cliente')[0].value) {
+                // Aparece un alert si lo introducido coincide con el captcha
+                alert("Bien hecho")
+            } else {
+                // Aparece un alert si lo introducido no coincide con el captcha
+                alert("Error, no coincide")
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Controlando elementos y Programando</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+	<center>
+		<h2>GENERACION DE FIGURAS GEOMETRICAS</h2>
+		<h3>TRIANGULO</h3>
+
+		<form name="configuracion">
+			<div>
+				<h3>CONFIGURACION</h3>
+				<h4>Opciones del modelo:</h4><br />
+				<table>
+					<tr>
+						<th>Filas</th>
+						<th>Caracter</th>
+					</tr>
+					<tr>
+						<td><input type="radio" name="Fila" value="25" />25</td>
+						<td><input type="radio" name="caracter" value="*" onclick="generar()" />Asterisco</td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="Fila" value="15" />15</td>
+						<td><input type="radio" name="caracter" value="$" onclick="generar()" />Dolar</td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="Fila" value="10" />10</td>
+						<td><input type="radio" name="caracter" value="%" onclick="generar()" />Porcentaje</td>
+					</tr>
+					<tr>
+						<td><input type="radio" name="Fila" value="5" />5</td>
+						<td><input type="radio" name="caracter" value="K" onclick="generar()" />Letra K<br /></td>
+					</tr>
+				</table><br><br>
+
+				<div name="datos">
+					<h4> VISUALIZACION DE LA FIGURA: </h4><textarea name='visualizador' cols='13' rows='6'></textarea>
+				</div>
+				<p></p>
+			</div>
+		</form>
+	</center>
+
+	<script>
+		// Esta función sirve para capturar los datos que se han marcado, para crear el objeto y dibujarlo
+		function generar() {
+			var filas;
+			var columnas;
+			var simbolo;
+
+			// Esto es para limpiar el textarea
+			document.getElementsByName('visualizador')[0].value = "";
+
+			// Este bucle for es para saber qué valor de filas se ha escogido
+			for (let i = 0; i < document.configuracion.Fila.length; i++) {
+				if (document.getElementsByName('Fila')[i].checked) {
+					filas = document.getElementsByName('Fila')[i].value;
+					columnas = filas * 2;
+					break;
+				}
+			}
+
+			// Este bucle es para saber qué caracter se ha escogido
+			for (let j = 0; j < document.configuracion.caracter.length; j++) {
+				if (document.getElementsByName('caracter')[j].checked) {
+					simbolo = document.getElementsByName('caracter')[j].value;
+					break;
+				}
+			}
+
+			// Se crea la nueva figura
+			var figura = new Poligono(filas, columnas, simbolo);
+
+			// Se dibuja la figura
+			figura.datospoligono();
+		}
+
+		// Función constructor del objeto polígono
+		function Poligono(rangofilas, rangocolumns, letraprint) {
+			// Número de filas
+			this.rangofilas = rangofilas;
+			// Número de columnas
+			this.rangocolumns = rangocolumns;
+			// Símbolo
+			this.letraprint = letraprint;
+			// Función para ver los datos del polígono
+			this.datospoligono = datospoligono;
+		}
+
+		// Función para dibujar el polígono
+		function datospoligono() {
+			for (let k = 0; k < (this.rangofilas); k++) {
+				for (let l = 0; l < (this.rangocolumns); l++) {
+					document.getElementsByName('visualizador')[0].value += this.letraprint;
+				}
+				// Salto de línea
+				document.getElementsByName('visualizador')[0].value += "\n";
+			}
+
+			// Esto es para ajustar las columnas del textarea
+			document.getElementsByName('visualizador')[0].cols = (this.rangocolumns);
+
+			// Esto es para ajustar las filas del textarea
+			document.getElementsByName('visualizador')[0].rows = (this.rangofilas);
+
+			// Esto es para visualizar un texto en el párrafo en el que muestra el número de filas y columnas de la figura
+			document.getElementsByTagName('p')[0].innerHTML = "El número de filas de la figura es " + this.rangofilas + " y el número de columnas es " + this.rangocolumns;
+		}
+	</script>
+</body>
+
+</html>
