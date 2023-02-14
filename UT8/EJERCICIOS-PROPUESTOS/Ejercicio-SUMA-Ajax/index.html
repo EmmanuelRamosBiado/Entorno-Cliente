@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUMAR</title>
+</head>
+
+<body>
+    <formz>
+        Número 1: <input type="number" name="valorCaja1" id="valorCaja1"><br>
+        Número 2: <input type="number" name="valorCaja2" id="valorCaja2"><br>
+        Resultado: <input type="text" name="cajaResultado" id="cajaResultado"><br>
+        <button>SUMAR</button>
+    </form>
+
+    <script>
+        let xhr;
+        let num1;
+        let num2;
+        let resu;
+
+        document.addEventListener("readystatechange", inicializar);
+
+        function inicializar(event) {
+            if (document.readyState == "complete") {
+                num1 = document.getElementsByTagName('input')[0];
+                num2 = document.getElementsByTagName('input')[1];
+                resu = document.getElementsByTagName('input')[2];
+
+                document.getElementsByTagName('button')[0].addEventListener('click', enviarDatos, false);
+            }
+        }
+
+        function enviarDatos(event) {
+            if (num1.value != '' && num2.value != '') {
+                num1.disabled = true;
+                num2.disabled = true;
+                xhr = new XMLHttpRequest();
+                xhr.addEventListener('readystatechange', gestionDatos, false);
+                xhr.open('POST', 'asumar.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('valorCaja1=' + num1.value + '&valorCaja2=' + num2.value);
+            }
+        }
+
+        function gestionDatos(event) {
+            
+            if (event.target.readyState == 4 && event.target.status == 200) {
+                
+                num1.disabled = false;
+                num2.disabled = false;
+                resu.value = event.target.responseText;
+            }
+        }
+    </script>
+</body>
+
+</html>

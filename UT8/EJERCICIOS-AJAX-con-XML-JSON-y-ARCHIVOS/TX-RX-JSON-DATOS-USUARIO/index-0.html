@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos JSON obtenidos a partir de PHP</title>
+</head>
+
+<body>
+    <h1>Datos para enviar a PHP</h1>
+
+    <input type="text" id="nombre" placeholder="Nombre" accept="text/plain"><br><br>
+    <input type="text" id="apellido" placeholder="Apellido" accept="text/plain"><br><br>
+    <input type="number" id="edad" placeholder="Edad" accept="text/plain">
+
+    <div class="enviar">
+        <h3>Enviar</h3>
+    </div>
+    <hr>
+    <div class="respuesta"></div>
+
+    <script>
+        let xhr;
+
+        let nombre;
+        let apellido;
+        let edad;
+        let boton;
+        let JSONrecibido;
+        let respuesta;
+
+        document.addEventListener('DOMContentLoaded', inicializar);
+
+        function inicializar(event) {
+            nombre = document.getElementById('nombre');
+            apellido = document.getElementById('apellido');
+            edad = document.getElementById('edad');
+            boton = document.getElementsByClassName('enviar')[0];
+            respuesta = document.getElementsByClassName('respuesta')[0];
+            boton.addEventListener('click', enviarPeticionAJAX);
+        }
+
+        function enviarPeticionAJAX(event) {
+            if (nombre.value != '' && apellido.value != '' && edad.value != '') {
+                nombre.disabled = true;
+                apellido.disabled = true;
+                edad.disabled = true;
+                boton.disabled = true;
+
+                xhr = new XMLHttpRequest();
+                xhr.addEventListener('readystatechange', gestionarDatos);
+                xhr.open('POST', 'datos.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send('nombre=' + nombre.value + '&apellido=' + apellido.value + '&edad=' + edad.value);
+
+            } else {
+                alert("Hay algunos campos que no están completos");
+            }
+
+            function gestionarDatos(event) {
+                if (event.target.readyState == 4 && event.target.status == 200) {
+
+                    nombre.disabled = false;
+                    apellido.disabled = false;
+                    edad.disabled = false;
+                    boton.disabled = false;
+
+                    JSONrecibido = JSON.parse(event.target.responseText);
+
+                    respuesta.innerHTML += "Estado: " + JSONrecibido.estado + "<br>";
+                    respuesta.innerHTML += "Nombre: " + JSONrecibido.nombre + "<br>";
+                    respuesta.innerHTML += "Apellido: " + JSONrecibido.apellido + "<br>";
+                    respuesta.innerHTML += "Edad: " + JSONrecibido.edad + "<br>";
+
+
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
