@@ -42,4 +42,3 @@ if ($q !== "") {
 
 // Mensaje si no hay resultados
 echo $resultado === "" ? "no existen coincidencias " : $resultado;
-?>
