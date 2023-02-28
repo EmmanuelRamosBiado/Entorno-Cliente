@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elección Gimnasio</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        let tabla = ['Abierto 24h', 'Solo mujeres', 'Clases Colectivas', 'Crossfit', 'Artes Marciales', 'Pilates'];
+        let tab;
+        let tablatr;
+        let tablatd;
+        let check;
+        let indice = 0;
+
+        document.addEventListener('DOMContentLoaded', inicializar);
+
+        function inicializar(event) {
+            tab.createElement('table');
+            for (let i = 0; i < 3; i++) {
+                tablatr.createElement('tr');
+                for (let j = 0; j < 2; j++) {
+                    tablatd.createElement('td');
+                    check.createElement('input');
+                    check.setAttribute('type', 'checkbox');
+                    check.setAttribute('defaultchecked', 'checked');
+                    check.setAttribute('name', tabla[indice]);
+                    check.setAttribute('value', tabla[inidice]);
+                    check.createTextNode(tabla[inidice]);
+                    indice++;
+                    tablatd.appendChild(check);
+                    console.log(check);
+                }
+                tablatr.appendChild(tablatd);
+            }
+
+        }
+    </script>
+</body>
+
+</html>

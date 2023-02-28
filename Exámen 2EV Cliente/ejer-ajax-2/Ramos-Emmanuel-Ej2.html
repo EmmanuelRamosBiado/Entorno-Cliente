@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+   <title>Estudiando al cliente</title>
+</head>
+
+<body>
+   <center>
+
+      <body>
+         <h1>Enviando datos de forma as�ncrona con AJAX</h1>
+         <p>Por favor, introduce los siguientes datos</p>
+         <form name="rrss">
+            <p><label>�Cu�l es tu nombre?</label> <input type="text" required /></p>
+            <p><label>�Nos das tu correo?</label> <input type="email" required /></p>
+            <p><label>�C�mo nos has conocido?</label> <select id="cmbMedio">
+                  <option value="FaceBook">Facebook</option>
+                  <option value="Twitter">Twitter</option>
+                  <option value="Whatsapp">Whatsapp</option>
+                  <option value="Correo">Mail</option>
+               </select></p>
+            <p><input type="checkbox" /> <label>�Quieres recibir nuestra informaci�n por el medio que nos has
+                  conocido?</label></p>
+            <p><input type="button" value=" Aceptar " /></p><br>
+            <p><b>Resultado de la conexi�n al servidor:</b></p><br>
+            <div name="devolucion"></div>
+         </form>
+   </center>
+
+   <script>
+      let nombre;
+      let correo;
+      let medio;
+      let eleccion;
+      let check = "";
+      let boton;
+      let respuesta;
+
+      let xhr;
+
+
+      document.addEventListener('DOMContentLoaded', iniciar);
+
+      function iniciar(event) {
+         nombre = document.getElementsByTagName('input')[0];
+         correo = document.getElementsByTagName('input')[1];
+         medio = document.getElementById('cmbMedio');
+         check = document.getElementsByTagName('input')[2]
+         boton = document.getElementsByTagName('input')[3];
+         respuesta = document.getElementsByTagName('div')[0];
+
+         nombre.addEventListener('keyup', enterNombre);
+         medio.addEventListener('change', cambioSelect);
+         check.addEventListener('click', clickCheckbox);
+         boton.addEventListener('click', enviarDatos);
+      }
+
+      function enterNombre(event) {
+         if (event.key == 'Enter') {
+            correo.focus() = true;
+         }
+      }
+
+      function cambioSelect(event) {
+         eleccion = medio.value;
+      }
+
+      function clickCheckbox(event) {
+         check = "Si";
+      }
+
+      function enviarDatos(event) {
+
+         xhr = new XMLHttpRequest();
+         xhr.addEventListener('readystatechange', gestionarDatos);
+         xhr.open('POST', 'datos.php', true);
+         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+         xhr.send('nom=' + nombre.value + '&cor=' + correo.value + '&opc=' + medio.value + '&pet=' + check);
+      }
+
+      function gestionarDatos(event) {
+         if (event.target.readyState == 4 && event.target.status == 200) {
+            if (event.target.responseText == 'Si') {
+               respuesta.innerHTML = "Quiero que se envíe información por " + medio.value;
+            } else if (event.target.response.responseText == 'no ok') {
+               respuesta.innerHTML = "No quiero que ese me envíe información";
+            }
+         }
+      }
+
+   </script>
+</body>
+
+</html>
